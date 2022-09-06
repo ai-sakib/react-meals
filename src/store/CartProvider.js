@@ -12,6 +12,7 @@ const cartReducer = (state, action) => {
         const totalAmount =
             state.totalAmount + action.item.price * action.item.qty
 
+        console.log('STATE', updatedItems)
         return {
             items: updatedItems,
             totalAmount: totalAmount,
@@ -26,6 +27,7 @@ const CartProvider = props => {
     )
 
     const addItemHandler = item => {
+        console.log('CONTEXT_ITEM', item)
         dispatchCartAction({ type: 'ADD_CART_ITEM', item: item })
     }
     const removeItemHandler = id => {
@@ -33,11 +35,12 @@ const CartProvider = props => {
     }
 
     const cartContext = {
-        items: [],
-        totalAmount: 0,
+        items: cartState.items,
+        totalAmount: cartState.totalAmount,
         addItem: addItemHandler,
         removeItem: removeItemHandler,
     }
+
     return (
         <CartContext.Provider value={cartContext}>
             {props.children}
