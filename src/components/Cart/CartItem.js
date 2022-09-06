@@ -13,8 +13,16 @@ const CartItem = props => {
                 </div>
             </div>
             <div className={classes.actions}>
-                <button onClick={props.onRemove}>−</button>
-                <button onClick={props.onAdd}>+</button>
+                <button
+                    className='hover:scale-110 duration-300'
+                    onClick={props.onRemove}>
+                    −
+                </button>
+                <button
+                    className='hover:scale-110 duration-300'
+                    onClick={props.onAdd}>
+                    +
+                </button>
             </div>
         </li>
     )
